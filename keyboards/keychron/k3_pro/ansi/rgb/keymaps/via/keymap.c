@@ -1,4 +1,4 @@
-/* Copyright 2023 @ Keychron (https://www.keychron.com)
+/* opyright 2023 @ Keychron (https://www.keychron.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,3 +57,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  BAT_LVL,  NK_TOGG,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,
      KC_TRNS,  KC_TRNS,  KC_TRNS,                                KC_TRNS,                                KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS)
 };
+
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+          case LGUI_T(KC_A):
+          case RGUI_T(KC_SCLN):
+          case LALT_T(KC_A):
+          case LALT_T(KC_SCLN):
+          case LSFT_T(KC_S):
+          case RSFT_T(KC_L):
+          case LT(1, KC_D):
+          case LT(1, KC_K):
+          case LT(3, KC_D):
+          case LT(3, KC_K):
+          // case LSFT_T(KC_A):
+          // case RSFT_T(KC_SCLN):
+          // case LT(1, KC_S):
+          // case LT(1, KC_L):
+          // case LT(3, KC_S):
+          // case LT(3, KC_L):
+          // case LGUI_T(KC_D):
+          // case RGUI_T(KC_K):
+          // case LALT_T(KC_D):
+          // case LALT_T(KC_K):
+          case LCTL_T(KC_F):
+          case LCTL_T(KC_J):
+          case RCTL_T(KC_J):
+          case LT(1, KC_SPC):
+          case LT(3, KC_SPC):
+            // Do not select the hold action when another key is pressed.
+            return false;
+        default:
+            return true;
+    }
+}

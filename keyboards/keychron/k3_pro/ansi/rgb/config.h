@@ -56,3 +56,8 @@
         { 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14 }
 
 #endif
+#define HOLD_ON_OTHER_KEY_PRESS
+#define FLOW_TAP_TERM 150
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+#define PERMISSIVE_HOLD
+#define CHORDAL_HOLD
