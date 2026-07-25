@@ -64,3 +64,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	_______,				_______,   	_______,   	_______,  	_______,   	_______,   	_______,   	_______,   	SIDE_SPD,	SIDE_SPI,	_______,				_______,	SIDE_VAI,	_______,
 	_______,	_______,	_______,										_______, 							_______,	MO(4),   	_______,				SIDE_MOD,	SIDE_VAD,   SIDE_HUI)
 };
+
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+		case LCTL_T(KC_A):
+		case LSFT_T(KC_S):
+		case LSFT_T(KC_L):
+		case RSFT_T(KC_L):
+        case LT(1, KC_D):
+        case LT(1, KC_K):
+        case LT(3, KC_D):
+        case LT(3, KC_K):
+		case LGUI_T(KC_F):
+		case LGUI_T(KC_J):
+		case RGUI_T(KC_J):
+		case LALT_T(KC_F):
+		case LALT_T(KC_J):
+		case RALT_T(KC_J):
+		case LT(1, KC_SPC):
+		case LT(3, KC_SPC):
+            // Do not select the hold action when another key is pressed.
+            return false;
+        default:
+            return true;
+    }
+}
